@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRESQL_HOSTNAME:localhost}:${POSTGRESQL_PORT:5432}/${POSTGRESQL_DB_NAME:blogdb_dev}
+    username: ${POSTGRESQL_DB_USER:postgres}
+    password: ${POSTGRESQL_DB_PASSWORD:test1234}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+keycloak:
+  auth-server-url: http://${KEYCLOAK_HOSTNAME:localhost}:${KEYCLOAK_PORT:11111}/auth
+  realm: BlogAPIKeycloak
+  resource: login-app
+  public-client: true
+  bearer-only: true

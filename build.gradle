@@ -1,0 +1,40 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.5.2.RELEASE")
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.5.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.mjovanc'
+version = '0.0.1'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.session:spring-session-core'
+	implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '2.5.2'
+	implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+
+	// Security
+	implementation group: 'org.keycloak', name: 'keycloak-spring-boot-starter', version: '16.1.0'
+	implementation group: 'org.keycloak.bom', name: 'keycloak-adapter-bom', version: '16.1.0', ext: 'pom'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.6.2'
+
+	runtimeOnly 'org.postgresql:postgresql'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
